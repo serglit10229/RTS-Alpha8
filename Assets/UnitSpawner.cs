@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class UnitSpawner : MonoBehaviour
 {
@@ -27,32 +28,62 @@ public class UnitSpawner : MonoBehaviour
 
     public GameObject progressBar;
 
+    public float pbFill = 0f;
+
     float prevTime = 0.0f;
+
+    bool timerIsRunning = false;
+
+    public List<GameObject> queue;
+
+    public float buildTime = 0;
+    bool safeSpawnStarted = false;
 
     private void Update()
     {
-        for (int i = 0; i < unitAmount; i++)
+    	if(queue.Count >= 1 && safeSpawnStarted != true)
+    		StartCoroutine("safeSpawn");
+        if(timerIsRunning == true)
         {
-            Debug.Log("Units To Make: " + unitAmount);
-            prodTime -= Time.deltaTime;
-
-            if (prodTime < 0)
-            {
-                Debug.Log("Unit Spawned");
-                Vector3 pos = transform.position;
-				//unit.GetComponent<NavMeshAgent>().enabled = false;
-                Instantiate(unit, new Vector3(x + pos.x, y + pos.y, z + pos.z), Quaternion.Euler(0.0f, 0.0f, 0.0f));
-                //unit.GetComponent<NavMeshAgent>().enabled = true;
-                unitAmount--;
-                prodTime = prevTime;
-            }
+        	pbFill += Time.deltaTime; 
+        	progressBar.GetComponent<Image>().fillAmount = pbFill/buildTime;
         }
-        progressBar.GetComponent<Image>().fillAmount = prodTime/ 5;
+        else
+        {
+        	pbFill = 0;
+        	progressBar.GetComponent<Image>().fillAmount = 0;
+        }
+
 
     }
-    public void UnitRequest(int unitRequestAmount)
+
+    IEnumerator safeSpawn()
     {
-        prevTime = prodTime;
-        unitAmount += unitRequestAmount;
+    	safeSpawnStarted = true;
+    	yield return new WaitUntil(() => timerIsRunning == false);
+    	StartCoroutine("Timer");
+    	safeSpawnStarted = false;
+    }
+
+    IEnumerator Timer(float buildTimer)
+    {
+    	buildTimer = buildTime
+    	timerIsRunning = true;
+    	yield return new WaitForSeconds(buildTimer);
+    	timerIsRunning = false;
+    	Spawn(queue[0]);
+    }
+
+    public void Spawn(GameObject unit)
+    {
+    	Vector3 pos = transform.position;
+        Instantiate(unit, new Vector3(x + pos.x, y + pos.y, z + pos.z), Quaternion.Euler(0.0f, 0.0f, 0.0f));
+        queue.Remove(queue[0]);	
+    }
+
+    public void UnitRequest(GameObject unitRequest)
+    {
+        prevTime = 5f;
+        queue.Add(unitRequest);
     }
 }
