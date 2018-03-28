@@ -91,12 +91,13 @@ public class PlayerSelection : MonoBehaviour {
         Debug.Log("OnSelect");
         circle.SetActive(true);
         //tc.GetComponent<Count>().selectedUnits++;
-        if(BotFactoryT1 != true || TankFactoryT1 != true)
+        if(BotFactoryT1 != true && TankFactoryT1 != true)
             GetComponent<PlayerController>().selected = true;
 
 		if (BotFactoryT1 == true) 
 		{
-			UM.ShowUI ("Bot1",gameObject);
+            Debug.Log("ShowUI_SCRIPT");
+            UM.ShowUI ("Bot1",gameObject);
 		}
 		if (TankFactoryT1 == true) 
 		{
@@ -116,7 +117,8 @@ public class PlayerSelection : MonoBehaviour {
         Debug.Log("OnDeselect");
         circle.SetActive(false);
         //tc.GetComponent<Count>().selectedUnits--;
-        GetComponent<PlayerController>().selected = false;
+        if (BotFactoryT1 != true && TankFactoryT1 != true)
+            GetComponent<PlayerController>().selected = false;
 
         if (BotFactoryT1 == true) 
 		{

@@ -14,8 +14,10 @@ public class UIManager : MonoBehaviour {
 
 	// Update is called once per frame
 	public void ShowUI (string factoryID, GameObject factory) {
-		if (factoryID == "Bot1") 
+        Debug.Log("ShowUI");
+        if (factoryID == "Bot1") 
 		{
+            Debug.Log("ShowBot1");
             List<GameObject> ls = new List<GameObject>();
             ls = Bot1UI.GetComponent<ButtonController>().Factory;
             Bot1UI.SetActive (true);

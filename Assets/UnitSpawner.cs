@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class UnitSpawner : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class UnitSpawner : MonoBehaviour
     public float prodTime = 0.0f;
     //public int unitRequestAmount = 0;
 
+    public GameObject progressBar;
+
     float prevTime = 0.0f;
 
     private void Update()
@@ -32,6 +35,7 @@ public class UnitSpawner : MonoBehaviour
         {
             Debug.Log("Units To Make: " + unitAmount);
             prodTime -= Time.deltaTime;
+
             if (prodTime < 0)
             {
                 Debug.Log("Unit Spawned");
@@ -43,6 +47,8 @@ public class UnitSpawner : MonoBehaviour
                 prodTime = prevTime;
             }
         }
+        progressBar.GetComponent<Image>().fillAmount = prodTime/ 5;
+
     }
     public void UnitRequest(int unitRequestAmount)
     {
