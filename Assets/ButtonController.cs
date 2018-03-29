@@ -6,13 +6,15 @@ using UnityEngine;
 public class ButtonController : MonoBehaviour
 {
 
-    public List<GameObject> units = new List<GameObject>();
+    public List<GameObject> bots = new List<GameObject>();
+    public List<GameObject> tanks = new List<GameObject>();
 
 
     public bool BotFactoryT1 = false;
     public bool TankFactoryT1 = false;
 
     public List<GameObject> Factory = new List<GameObject>();
+
 
     // Use this for initialization
     void Update()
@@ -49,10 +51,10 @@ public class ButtonController : MonoBehaviour
             foreach (GameObject go in Factory)
             {
                 UnitSpawner us = go.GetComponent<UnitSpawner>();
-                us.unit = units[0];
+                us.unit = bots[0];
                 us.prodTime = 5.0f;
                 //Factory.GetComponent<UnitSpawner>().unitRequestAmount = 1;
-                us.UnitRequest(1);
+                us.UnitRequest(bots[0]);
             }
         }
         if (TankFactoryT1 == true)
@@ -60,10 +62,10 @@ public class ButtonController : MonoBehaviour
             foreach (GameObject go in Factory)
             {
                 UnitSpawner us = go.GetComponent<UnitSpawner>();
-                us.unit = units[0];
+                us.unit = tanks[0];
                 us.prodTime = 5.0f;
                 //Factory.GetComponent<UnitSpawner>().unitRequestAmount = 1;
-                us.UnitRequest(1);
+                us.UnitRequest(tanks[0]);
             }
         }
     }

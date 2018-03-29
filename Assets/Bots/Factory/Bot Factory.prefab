@@ -2178,8 +2178,11 @@ MonoBehaviour:
   allowSpawn: 0
   unitAmount: 0
   unit: {fileID: 0}
-  prodTime: 0
+  prodTime: 5
   progressBar: {fileID: 1656847145113210}
+  pbFill: 0
+  queue: []
+  buildTime: 5
 --- !u!114 &114492406604708072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2291,6 +2294,9 @@ MonoBehaviour:
   unit: {fileID: 0}
   prodTime: 0
   progressBar: {fileID: 0}
+  pbFill: 0
+  queue: []
+  buildTime: 0
 --- !u!114 &114797240508983394
 MonoBehaviour:
   m_ObjectHideFlags: 1

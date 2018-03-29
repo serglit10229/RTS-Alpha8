@@ -41,33 +41,32 @@ public class UnitSpawner : MonoBehaviour
 
     private void Update()
     {
-    	if(queue.Count >= 1 && safeSpawnStarted != true)
-    		StartCoroutine("safeSpawn");
-        if(timerIsRunning == true)
+    	if(queue.Count >= 1 && timerIsRunning != true)
+            StartCoroutine("Timer", 5);
+        if (timerIsRunning == true)
         {
-        	pbFill += Time.deltaTime; 
-        	progressBar.GetComponent<Image>().fillAmount = pbFill/buildTime;
+            pbFill += Time.deltaTime;
+            progressBar.GetComponent<Image>().fillAmount = pbFill / buildTime;
         }
         else
         {
-        	pbFill = 0;
-        	progressBar.GetComponent<Image>().fillAmount = 0;
+            pbFill = 0;
+            progressBar.GetComponent<Image>().fillAmount = 0;
+        }
+
+        if(progressBar.GetComponent<Image>().fillAmount == 1)
+        {
+            pbFill = 0;
+            progressBar.GetComponent<Image>().fillAmount = 0;
         }
 
 
     }
 
-    IEnumerator safeSpawn()
-    {
-    	safeSpawnStarted = true;
-    	yield return new WaitUntil(() => timerIsRunning == false);
-    	StartCoroutine("Timer");
-    	safeSpawnStarted = false;
-    }
 
     IEnumerator Timer(float buildTimer)
     {
-    	buildTimer = buildTime
+        buildTimer = buildTime;
     	timerIsRunning = true;
     	yield return new WaitForSeconds(buildTimer);
     	timerIsRunning = false;
