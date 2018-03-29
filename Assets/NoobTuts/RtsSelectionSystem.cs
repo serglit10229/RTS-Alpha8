@@ -27,6 +27,8 @@ public class RtsSelectionSystem : MonoBehaviour {
 
     public int lsLength = 0;
 
+    public List<GameObject> unitsList;
+
     void Start() {
         cam = GetComponent<Camera>();
     }
@@ -70,8 +72,17 @@ public class RtsSelectionSystem : MonoBehaviour {
     // call 'OnSelect' for multiple GameObjects
     public void call_onselect_multi(List<GameObject> list) {
         foreach (var go in list)
+        {
             call_onselect(go);
-            lsLength = list.Count;
+            if(go.GetComponent<PlayerSelection>().BotFactoryT1 == false && go.GetComponent<PlayerSelection>().TankFactoryT1 == false && !unitsList.Contains(go))
+            {
+            	unitsList.Add(go);
+            }
+            else
+            {
+            	return;
+            }
+        }
     }
 
     // call ondeselect for each GameObject in 'list', unless its in 'ignore'
@@ -117,7 +128,8 @@ public class RtsSelectionSystem : MonoBehaviour {
         }
 
         var selected = find_selected(cam, rect_around(start, cur));
-        arraysuka = selected.Count();
+
+
         
 
         // multi selection in progress? update rect
@@ -156,6 +168,8 @@ public class RtsSelectionSystem : MonoBehaviour {
             // don't draw the rectangle anymore
             visible = false;
         }
+
+
     }
 
     void OnGUI() {
