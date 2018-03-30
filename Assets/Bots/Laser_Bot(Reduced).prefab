@@ -1227,10 +1227,7 @@ MonoBehaviour:
   arrow: {fileID: 1038592749489628, guid: c9a7a8998a12d7b46bece762361d0d82, type: 2}
   Player2: 0
   enemyDetected: 0
-  target: {fileID: 0}
-  direction: {x: 0, y: 0, z: 0}
   scale: {x: 0.075, y: 0.075, z: 0.075}
-  accuracy: 1
   Bashnya: {fileID: 1704901934306418}
   m_Target: {fileID: 0}
   m_Speed: 5
@@ -1251,10 +1248,7 @@ MonoBehaviour:
   arrow: {fileID: 1038592749489628, guid: c9a7a8998a12d7b46bece762361d0d82, type: 2}
   Player2: 0
   enemyDetected: 0
-  target: {fileID: 0}
-  direction: {x: 0, y: 0, z: 0}
   scale: {x: 0.075, y: 0.075, z: 0.075}
-  accuracy: 1
   Bashnya: {fileID: 1704901934306418}
   m_Target: {fileID: 0}
   m_Speed: 5

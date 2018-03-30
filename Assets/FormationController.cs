@@ -6,6 +6,9 @@ public class FormationController : MonoBehaviour {
 	public float unitsNumber;
 	public List<GameObject> units;
 	public List<Vector3> positions;
+	public List<Vector3> lastPositions;
+
+	public bool invoken = false;
 
 	Vector3 midPoint1;
 	public Vector3 midPoint2;
@@ -22,14 +25,26 @@ public class FormationController : MonoBehaviour {
 				positions.Add(g.transform.position);
 		}
 
-		if(units.Count > 1)
+		if(units.Count > 1 && invoken == false)
 		{
 			Invoke("MidPoint", 0);
 		}
+		lastPositions = positions;
+		foreach(Vector3 p in lastPositions)
+		{
+			if(!positions.Contains(p))
+			{
+				invoken = false;
+
+			}
+		}
+
+
 	}
 
 	void MidPoint()
 	{
+		invoken = true;
         Debug.Log("MidPoint");
 		foreach(Vector3 pos in positions)
 		{

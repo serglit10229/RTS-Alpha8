@@ -393,7 +393,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1509782299607638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 115.3, y: 1.9912417, z: 40}
+  m_LocalPosition: {x: 26.677795, y: 2.0036929, z: 37.356926}
   m_LocalScale: {x: 1.412593, y: 1.412594, z: 1.412594}
   m_Children:
   - {fileID: 4590165638541116}
@@ -1085,6 +1085,10 @@ MonoBehaviour:
   TankFactoryT1: 0
   BotT1UI: {fileID: 0}
   TankT1UI: {fileID: 0}
+  unitType: 
+  dcObj: []
+  mouseClicks: 0
+  doubleClickTime: 1
 --- !u!195 &195299904971983694
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -1105,4 +1109,4 @@ NavMeshAgent:
   m_Height: 2.1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 2
+  m_ObstacleAvoidanceType: 4
