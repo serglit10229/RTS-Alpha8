@@ -74,14 +74,6 @@ public class RtsSelectionSystem : MonoBehaviour {
         foreach (var go in list)
         {
             call_onselect(go);
-            if(go.GetComponent<PlayerSelection>().BotFactoryT1 == false && go.GetComponent<PlayerSelection>().TankFactoryT1 == false && !unitsList.Contains(go))
-            {
-            	unitsList.Add(go);
-            }
-            else
-            {
-            	return;
-            }
         }
     }
 

@@ -105,9 +105,9 @@ public class PlayerSelection : MonoBehaviour {
         }
 		if (TankFactoryT1 == false && BotFactoryT1 == false) 
 		{
-			if (!unitManager.units.Contains (gameObject)) 
+			if (!Camera.main.GetComponent<FormationController>().units.Contains (gameObject)) 
 			{
-				unitManager.units.Add(gameObject);
+                Camera.main.GetComponent<FormationController>().units.Add(gameObject);
 			}
 		}
     }

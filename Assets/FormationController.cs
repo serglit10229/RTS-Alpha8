@@ -24,12 +24,13 @@ public class FormationController : MonoBehaviour {
 
 		if(units.Count > 1)
 		{
-			MidPoint();
+			Invoke("MidPoint", 0);
 		}
 	}
 
 	void MidPoint()
 	{
+        Debug.Log("MidPoint");
 		foreach(Vector3 pos in positions)
 		{
 			midPoint1 += pos;
