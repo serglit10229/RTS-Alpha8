@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public Interactables focus;  // Our current focus: Item, Enemy etc.
     public bool selected = false;
     public LayerMask movementMask;  // Filter out everything not walkable
+    public Transform lastPosition;
+
 
     public GameObject thisUnit;
 
@@ -22,6 +24,12 @@ public class PlayerController : MonoBehaviour
     {
         cam = Camera.main;
         motor = thisUnit.GetComponent<PlayerMotor>();
+        InvokeRepeating("lastPos", 1,1);
+    }
+
+    void lastPos()
+    {
+        lastPosition = transform;
     }
 
     // Update is called once per frame

@@ -128,12 +128,12 @@ public class PlayerSelection : MonoBehaviour {
 		{
             UM.HideUI("Tank1");
         }
-		if (TankFactoryT1 == false && BotFactoryT1 == false) 
-		{
-			if (unitManager.units.Contains (gameObject)) 
-			{
-				unitManager.units.Remove(gameObject);
-			}
-		}
+        if (TankFactoryT1 == false && BotFactoryT1 == false)
+        {
+            if (Camera.main.GetComponent<FormationController>().units.Contains(gameObject))
+            {
+                Camera.main.GetComponent<FormationController>().units.Remove(gameObject);
+            }
+        }
     }
 }

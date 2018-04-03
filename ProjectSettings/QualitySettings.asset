@@ -96,20 +96,4 @@ QualitySettings:
     excludedTargetPlatforms:
     - iPhone
     - Android
-  m_PerPlatformDefaultQuality:
-    Android: 1
-    Nintendo 3DS: 2
-    Nintendo Switch: 2
-    PS4: 2
-    PSM: 2
-    PSP2: 1
-    Samsung TV: 1
-    Standalone: 1
-    Tizen: 1
-    Web: 2
-    WebGL: 1
-    WiiU: 2
-    Windows Store Apps: 2
-    XboxOne: 2
-    iPhone: 1
-    tvOS: 1
+  m_PerPlatformDefaultQuality: {}
