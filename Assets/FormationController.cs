@@ -17,7 +17,7 @@ public class FormationController : MonoBehaviour {
 
     private void Start()
     {
-
+    	InvokeRepeating("MidPoint",1,1);
     }
 
     // Update is called once per frame
@@ -49,7 +49,7 @@ public class FormationController : MonoBehaviour {
 
             if (invoken == false)
             {
-                Invoke("MidPoint", 0);
+                //Invoke("MidPoint", 0);
             }
         }
         else
@@ -68,9 +68,19 @@ public class FormationController : MonoBehaviour {
 
 			}
 		}
-
-
+		if(units.Count > 1)
+		{
+			foreach(GameObject unit in units)
+			{
+				unit.GetComponent<PlayerController>().army = true;
+				unit.GetComponent<PlayerController>().armyMid = midPoint2;
+			}
+		}			
 	}
+
+
+
+	
 
 	void MidPoint()
 	{

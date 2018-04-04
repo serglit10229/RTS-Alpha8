@@ -10,7 +10,7 @@ public class Bulldozer : MonoBehaviour {
 	void Start () {
 		
 	}
-	
+	/*
 	// Update is called once per frame
 	void OnTriggerEnter (Collider col) {
         Debug.Log("Destroy");
@@ -27,4 +27,5 @@ public class Bulldozer : MonoBehaviour {
             }
         }
 	}
+    */
 }

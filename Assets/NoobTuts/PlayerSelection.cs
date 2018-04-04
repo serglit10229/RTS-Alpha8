@@ -114,6 +114,7 @@ public class PlayerSelection : MonoBehaviour {
     
     // OnDeselect is called by the RTS Selection System
     void OnDeselect() {
+        GetComponent<PlayerController>().army = false;
         Debug.Log("OnDeselect");
         circle.SetActive(false);
         //tc.GetComponent<Count>().selectedUnits--;

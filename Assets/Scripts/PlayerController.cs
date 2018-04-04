@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask movementMask;  // Filter out everything not walkable
     public Transform lastPosition;
 
+    public bool army = false;
+    public Vector3 armyMid;
+
 
     public GameObject thisUnit;
 
@@ -47,9 +50,19 @@ public class PlayerController : MonoBehaviour
                 // If the ray hits
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, movementMask))
                 {
-                    Debug.Log(hit.point);
-                    motor.MoveToPoint(hit.point);   // Move to where we hit
-                    RemoveFocus();
+                    if(army == true)
+                    {
+                        motor.MoveToPoint(hit.point + (armyMid - transform.position));
+                        RemoveFocus();
+                    }
+                    else
+                    {
+                        armyMid = Vector3.zero;
+                        army = false;
+                        motor.MoveToPoint(hit.point);   // Move to where we hit
+                        RemoveFocus();
+                    }
+
                 }
             }
 
