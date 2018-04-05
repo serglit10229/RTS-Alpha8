@@ -8,14 +8,20 @@ public class FormationController : MonoBehaviour {
 	public List<Transform> positions;
 	public List<Transform> lastPositions;
 
-	public bool invoken = false;
+
+
+    public float formWidth = 1;
+    public float formHeight = 1;
+    public float spacing = 1f;
+
+    public bool invoken = false;
 
 	Vector3 midPoint1;
 	public Vector3 midPoint2;
 
     public bool multiple = false;
 
-    public float offset = 0;
+    public float offset = 5;
 
     private void Start()
     {
@@ -67,18 +73,33 @@ public class FormationController : MonoBehaviour {
 			if(!positions.Contains(p))
 			{
 				invoken = false;
-
 			}
 		}
 		if(units.Count > 1)
 		{
-			foreach(GameObject unit in units)
+
+            formWidth = Mathf.RoundToInt(Mathf.Sqrt(units.Count) - 0.5f);
+            formHeight = Mathf.RoundToInt((units.Count / formWidth) + 0.5f);
+            for (int u = 0; u <= units.Count; u++)
+            {
+                Debug.Log("a");
+                for (float j = 1; j <= formHeight; j++)
+                {
+                    Debug.Log("b");
+                    for (float i = 1; i <= formWidth; i++)
+                    {
+                        Debug.Log((i * offset) + "2:" + (j * offset));
+                        units[u].GetComponent<PlayerController>().army = true;
+                        units[u].GetComponent<PlayerController>().armyDest = new Vector3(i * offset, 0, j * offset);
+                    }
+                }
+            }
+
+            foreach (GameObject unit in units)
 			{
-				offset++; 
-				unit.GetComponent<PlayerController>().army = true;
-				midPoint2.x += offset;
-				unit.GetComponent<PlayerController>().armyMid = midPoint2; 
-			}
+
+
+            }
 		}			
 	}
 

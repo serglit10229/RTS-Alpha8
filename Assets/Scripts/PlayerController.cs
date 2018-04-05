@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public Transform lastPosition;
 
     public bool army = false;
-    public Vector3 armyMid;
+    public Vector3 armyDest;
 
     public Vector3 dest;
 
@@ -54,12 +54,13 @@ public class PlayerController : MonoBehaviour
                     dest = hit.point;
                     if(army == true)
                     {
-                        motor.MoveToPoint(hit.point + (armyMid - transform.position));
+
+                        motor.MoveToPoint(dest + armyDest);
                         RemoveFocus();
                     }
                     else
                     {
-                        armyMid = Vector3.zero;
+                        armyDest = Vector3.zero;
                         army = false;
                         motor.MoveToPoint(hit.point);   // Move to where we hit
                         RemoveFocus();
