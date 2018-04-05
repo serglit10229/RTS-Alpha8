@@ -75,24 +75,30 @@ public class FormationController : MonoBehaviour {
 				invoken = false;
 			}
 		}
+		/*
 		if(units.Count > 1)
 		{
 
             formWidth = Mathf.RoundToInt(Mathf.Sqrt(units.Count) - 0.5f);
             formHeight = Mathf.RoundToInt((units.Count / formWidth) + 0.5f);
-            for (int u = 0; u <= units.Count; u++)
+
+            foreach(GameObject u in units)
             {
-                Debug.Log("a");
+            	Debug.Log("a");
                 for (float j = 1; j <= formHeight; j++)
                 {
                     Debug.Log("b");
                     for (float i = 1; i <= formWidth; i++)
                     {
                         Debug.Log((i * offset) + "2:" + (j * offset));
-                        units[u].GetComponent<PlayerController>().army = true;
-                        units[u].GetComponent<PlayerController>().armyDest = new Vector3(i * offset, 0, j * offset);
+                        u.GetComponent<PlayerController>().army = true;
+                        u.GetComponent<PlayerController>().armyDest = new Vector3(i * offset, 0, j * offset);
                     }
                 }
+            }
+            for (int u = 0; u <= units.Count; u++)
+            {
+                
             }
 
             foreach (GameObject unit in units)
@@ -100,7 +106,8 @@ public class FormationController : MonoBehaviour {
 
 
             }
-		}			
+		}
+		*/			
 	}
 
 
