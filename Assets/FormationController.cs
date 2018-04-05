@@ -15,6 +15,8 @@ public class FormationController : MonoBehaviour {
 
     public bool multiple = false;
 
+    public float offset = 0;
+
     private void Start()
     {
     	InvokeRepeating("MidPoint",1,1);
@@ -72,8 +74,10 @@ public class FormationController : MonoBehaviour {
 		{
 			foreach(GameObject unit in units)
 			{
+				offset++; 
 				unit.GetComponent<PlayerController>().army = true;
-				unit.GetComponent<PlayerController>().armyMid = midPoint2;
+				midPoint2.x += offset;
+				unit.GetComponent<PlayerController>().armyMid = midPoint2; 
 			}
 		}			
 	}

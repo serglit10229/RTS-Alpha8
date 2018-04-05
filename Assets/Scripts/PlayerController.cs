@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public bool army = false;
     public Vector3 armyMid;
 
+    public Vector3 dest;
 
     public GameObject thisUnit;
 
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour
                 // If the ray hits
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, movementMask))
                 {
+                    dest = hit.point;
                     if(army == true)
                     {
                         motor.MoveToPoint(hit.point + (armyMid - transform.position));
@@ -111,5 +113,11 @@ public class PlayerController : MonoBehaviour
 
         focus = null;
         motor.StopFollowingTarget();
+    }
+
+    void OnDrawGizmosSelected() 
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, dest);
     }
 }
