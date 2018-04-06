@@ -14,6 +14,9 @@ public class FormationController : MonoBehaviour {
     public float formHeight = 1;
     public float spacing = 1f;
 
+    public float gridx = 0;
+    public float gridy = 0;
+
     public bool invoken = false;
 
 	Vector3 midPoint1;
@@ -75,39 +78,27 @@ public class FormationController : MonoBehaviour {
 				invoken = false;
 			}
 		}
-		/*
-		if(units.Count > 1)
-		{
+
+        if (units.Count > 1)
+        {
 
             formWidth = Mathf.RoundToInt(Mathf.Sqrt(units.Count) - 0.5f);
             formHeight = Mathf.RoundToInt((units.Count / formWidth) + 0.5f);
 
-            foreach(GameObject u in units)
-            {
-            	Debug.Log("a");
-                for (float j = 1; j <= formHeight; j++)
-                {
-                    Debug.Log("b");
-                    for (float i = 1; i <= formWidth; i++)
-                    {
-                        Debug.Log((i * offset) + "2:" + (j * offset));
-                        u.GetComponent<PlayerController>().army = true;
-                        u.GetComponent<PlayerController>().armyDest = new Vector3(i * offset, 0, j * offset);
-                    }
-                }
-            }
-            for (int u = 0; u <= units.Count; u++)
-            {
-                
-            }
-
             foreach (GameObject unit in units)
-			{
-
-
+            {
+                unit.GetComponent<PlayerController>().army = true;
+                unit.GetComponent<PlayerController>().armyMid = midPoint2;
             }
-		}
-		*/			
+        }
+        else
+        {
+            foreach (GameObject unit in units)
+            {
+                unit.GetComponent<PlayerController>().army = false;
+            }
+        }
+					
 	}
 
 

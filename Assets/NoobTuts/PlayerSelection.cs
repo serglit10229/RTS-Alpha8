@@ -133,6 +133,7 @@ public class PlayerSelection : MonoBehaviour {
         {
             if (Camera.main.GetComponent<FormationController>().units.Contains(gameObject))
             {
+                GetComponent<PlayerController>().army = false;
                 Camera.main.GetComponent<FormationController>().units.Remove(gameObject);
             }
         }

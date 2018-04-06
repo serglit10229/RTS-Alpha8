@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public Transform lastPosition;
 
     public bool army = false;
-    public Vector3 armyDest;
+    public Vector3 armyMid;
 
     public Vector3 dest;
 
@@ -52,19 +52,19 @@ public class PlayerController : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, movementMask))
                 {
                     dest = hit.point;
-                    if(army == true)
+                    if (army == true)
                     {
-
-                        motor.MoveToPoint(dest + armyDest);
+                        //armyMid = Vector3.zero;
+                        motor.MoveToPoint(transform.position + (dest - armyMid));  // Move to where we hit
                         RemoveFocus();
                     }
                     else
                     {
-                        armyDest = Vector3.zero;
-                        army = false;
+                        armyMid = Vector3.zero;
                         motor.MoveToPoint(hit.point);   // Move to where we hit
                         RemoveFocus();
                     }
+
 
                 }
             }
