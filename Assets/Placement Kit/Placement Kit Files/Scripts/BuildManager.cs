@@ -151,7 +151,7 @@ public class BuildManager: MonoBehaviour
 
                         bl.buildingGameObject = (GameObject)Instantiate(Building[SelectedBuilding],
                         new Vector3(hit[i].point.x,
-                            hit[i].point.y + Building[SelectedBuilding].GetComponent<Collider>().transform.localScale.y / 2,
+                            hit[i].point.y + Building[SelectedBuilding].GetComponent<CastlePlayer>().yoff + Building[SelectedBuilding].GetComponent<Collider>().transform.localScale.y / 2,
                             hit[i].point.z),
                         Quaternion.identity);
 

@@ -5,6 +5,8 @@ public class CastlePlayer : MonoBehaviour {
     // Note: OnMouseDown only works if object has a collider
     public GameObject BuildGuide;
 
+    public float yoff = 0f;
+
 
     public bool overlap = false;
     void OnMouseDown() {

@@ -318,7 +318,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616814639062036}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.25, y: -0.11612058, z: 16.323013}
+  m_LocalPosition: {x: 12.98, y: -0.11612058, z: 24.98}
   m_LocalScale: {x: 1.1500001, y: 1.1500001, z: 1.1500001}
   m_Children:
   - {fileID: 4416360247289120}
@@ -1188,7 +1188,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616814639062036}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3, y: 4, z: 3}
@@ -1285,6 +1285,10 @@ MonoBehaviour:
   movementMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  lastPosition: {fileID: 0}
+  army: 0
+  armyMid: {x: 0, y: 0, z: 0}
+  dest: {x: 0, y: 0, z: 0}
   thisUnit: {fileID: 1616814639062036}
 --- !u!114 &114754300123503790
 MonoBehaviour:
