@@ -1641,6 +1641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BuildGuide: {fileID: 1158771125446766}
+  yoff: 0
   overlap: 0
 --- !u!114 &114347685812318714
 MonoBehaviour:
@@ -1663,6 +1664,10 @@ MonoBehaviour:
   unitAmount: 0
   unit: {fileID: 1509782299607638, guid: e6b78e18431544f6581db04222588b12, type: 2}
   prodTime: 0
+  progressBar: {fileID: 0}
+  pbFill: 0
+  queue: []
+  buildTime: 0
 --- !u!114 &114711698290354872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1676,10 +1681,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circle: {fileID: 1237357591168694}
   UM: {fileID: 0}
+  unitManager: {fileID: 0}
   BotFactoryT1: 0
   TankFactoryT1: 1
   BotT1UI: {fileID: 0}
   TankT1UI: {fileID: 0}
+  unitType: 
+  dcObj: []
+  mouseClicks: 0
+  doubleClickTime: 1
 --- !u!208 &208105962743496440
 NavMeshObstacle:
   m_ObjectHideFlags: 1
