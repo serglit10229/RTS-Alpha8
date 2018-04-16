@@ -39,6 +39,8 @@ public class UnitSpawner : MonoBehaviour
     public float buildTime = 0;
     bool safeSpawnStarted = false;
 
+    public bool testClick = true;
+
     private void Update()
     {
     	if(queue.Count >= 1 && timerIsRunning != true)

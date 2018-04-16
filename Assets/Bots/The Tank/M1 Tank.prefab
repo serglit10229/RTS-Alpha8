@@ -380,7 +380,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1509782299607638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.677795, y: 2.0036929, z: 37.356926}
+  m_LocalPosition: {x: 36.5, y: 2.0036929, z: 11.9}
   m_LocalScale: {x: 1.412593, y: 1.412594, z: 1.412594}
   m_Children:
   - {fileID: 4948182133134102}
@@ -940,7 +940,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
@@ -1026,6 +1026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 35
   interval: 1.5
+  damage: 25
   enemyTag: Enemy
   arrow: {fileID: 1038592749489628, guid: c9a7a8998a12d7b46bece762361d0d82, type: 2}
   Player2: 0
@@ -1034,6 +1035,8 @@ MonoBehaviour:
   Bashnya: {fileID: 1919470963712324}
   m_Target: {fileID: 0}
   m_Speed: 5
+  mishaAxis: 1
+  lTargetDir: {x: 0, y: 0, z: 0}
 --- !u!114 &114584190109809190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1055,6 +1058,7 @@ MonoBehaviour:
   armyMid: {x: 0, y: 0, z: 0}
   dest: {x: 0, y: 0, z: 0}
   thisUnit: {fileID: 1509782299607638}
+  destPoint: {fileID: 1716286754887974, guid: 4b11a2c0a30e4e84686b82a798b479d7, type: 2}
 --- !u!114 &114589793726669398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1094,6 +1098,7 @@ MonoBehaviour:
   dcObj: []
   mouseClicks: 0
   doubleClickTime: 1
+  selected: 0
 --- !u!195 &195299904971983694
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -1103,7 +1108,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 3.1
-  m_Speed: 4
+  m_Speed: 8
   m_Acceleration: 2
   avoidancePriority: 50
   m_AngularSpeed: 100
@@ -1114,4 +1119,4 @@ NavMeshAgent:
   m_Height: 2.1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 1
+  m_ObstacleAvoidanceType: 4

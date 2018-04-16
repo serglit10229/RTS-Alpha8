@@ -32,7 +32,7 @@ public class FormationController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void FixedUpdate() {
 		unitsNumber = GetComponent<RtsSelectionSystem>().unitsList.Count;
 		units = GetComponent<RtsSelectionSystem>().unitsList;
 
@@ -108,7 +108,7 @@ public class FormationController : MonoBehaviour {
 	void MidPoint()
 	{
 		invoken = true;
-        Debug.Log("MidPoint");
+
 		midPoint2 = SumArray(positions) / units.Count;
 	}
 

@@ -63,109 +63,62 @@ public class ButtonController : MonoBehaviour
             {
                 UnitSpawner us = go.GetComponent<UnitSpawner>();
                 us.unit = tanks[0];
-                us.prodTime = 5.0f;
+                us.prodTime = 10f;
                 //Factory.GetComponent<UnitSpawner>().unitRequestAmount = 1;
                 us.UnitRequest(tanks[0]);
             }
         }
     }
-    void Unit2()
+    public void Unit2()
     {
         if (BotFactoryT1 == true)
         {
 
+            foreach (GameObject go in Factory)
+            {
+                UnitSpawner us = go.GetComponent<UnitSpawner>();
+                us.unit = bots[0];
+                us.prodTime = 15f;
+                //Factory.GetComponent<UnitSpawner>().unitRequestAmount = 1;
+                us.UnitRequest(bots[1]);
+            }
         }
         if (TankFactoryT1 == true)
         {
-
+            foreach (GameObject go in Factory)
+            {
+                UnitSpawner us = go.GetComponent<UnitSpawner>();
+                us.unit = tanks[0];
+                us.prodTime = 20f;
+                //Factory.GetComponent<UnitSpawner>().unitRequestAmount = 1;
+                us.UnitRequest(tanks[1]);
+            }
         }
     }
-    void Unit3()
+    public void Unit3()
     {
         if (BotFactoryT1 == true)
         {
 
+            foreach (GameObject go in Factory)
+            {
+                UnitSpawner us = go.GetComponent<UnitSpawner>();
+                us.unit = bots[0];
+                us.prodTime = 5.0f;
+                //Factory.GetComponent<UnitSpawner>().unitRequestAmount = 1;
+                us.UnitRequest(bots[2]);
+            }
         }
         if (TankFactoryT1 == true)
         {
-
-        }
-    }
-    void Unit4()
-    {
-        if (BotFactoryT1 == true)
-        {
-
-        }
-        if (TankFactoryT1 == true)
-        {
-
-        }
-    }
-    void Unit5()
-    {
-        if (BotFactoryT1 == true)
-        {
-
-        }
-        if (TankFactoryT1 == true)
-        {
-
-        }
-    }
-    void Unit6()
-    {
-        if (BotFactoryT1 == true)
-        {
-
-        }
-        if (TankFactoryT1 == true)
-        {
-
-        }
-    }
-    void Unit7()
-    {
-        if (BotFactoryT1 == true)
-        {
-
-        }
-        if (TankFactoryT1 == true)
-        {
-
-        }
-    }
-    void Unit8()
-    {
-        if (BotFactoryT1 == true)
-        {
-
-        }
-        if (TankFactoryT1 == true)
-        {
-
-        }
-    }
-    void Unit9()
-    {
-        if (BotFactoryT1 == true)
-        {
-
-        }
-        if (TankFactoryT1 == true)
-        {
-
-        }
-    }
-    void Unit10()
-    {
-        if (BotFactoryT1 == true)
-        {
-
-        }
-        if (TankFactoryT1 == true)
-        {
-
+            foreach (GameObject go in Factory)
+            {
+                UnitSpawner us = go.GetComponent<UnitSpawner>();
+                us.unit = tanks[0];
+                us.prodTime = 25f;
+                //Factory.GetComponent<UnitSpawner>().unitRequestAmount = 1;
+                us.UnitRequest(tanks[2]);
+            }
         }
     }
 }

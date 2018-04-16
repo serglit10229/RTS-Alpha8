@@ -8,6 +8,8 @@ TagManager:
   - SelectableUnit
   - Enemy
   - MetalSpots
+  - Floor
+  - UI
   layers:
   - Default
   - TransparentFX

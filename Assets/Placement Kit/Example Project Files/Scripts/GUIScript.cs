@@ -3,11 +3,12 @@ using UnityEngine.UI;
 
 public class GUIScript : MonoBehaviour {
 
-    BuildManager bm;
-    Button BotFactory, TankFactory, Metal, Energy;
+    public BuildManager bm;
+    public Canvas cv;
+    public Button BotFactory, TankFactory, Metal, Energy;
     bool buildopen = false;
 
-    // Use this for initialization
+    /*
     void Start () {
 		bm = GameObject.Find("BuildManager").GetComponent<BuildManager>();
         Canvas cv = GameObject.Find("Canvas").GetComponent<Canvas>();
@@ -16,7 +17,7 @@ public class GUIScript : MonoBehaviour {
         Metal = cv.transform.Find("Metal").gameObject.GetComponent<Button>();
         Energy = cv.transform.Find("Energy").gameObject.GetComponent<Button>();
     }
-
+    */
     public void ActiveteBuilding(Button pressedBtn)
     {
         if (pressedBtn.name == "BuildButton")

@@ -23,6 +23,7 @@ public class PlayerSelection : MonoBehaviour {
     public int mouseClicks = 0;
     public float doubleClickTime = 1f;
 
+    public bool selected = false;
 
 
     /////////////////////////////////////////////
@@ -87,21 +88,22 @@ public class PlayerSelection : MonoBehaviour {
 	}
 
     // OnSelect is called by the RTS Selection System
-    void OnSelect() {
-        Debug.Log("OnSelect");
+    public void OnSelect() {
+        selected = true;
+
         circle.SetActive(true);
         //tc.GetComponent<Count>().selectedUnits++;
         if(BotFactoryT1 != true && TankFactoryT1 != true)
             GetComponent<PlayerController>().selected = true;
 
-		if (BotFactoryT1 == true) 
+		if (BotFactoryT1 == true && !UM.BotFactory.Contains(gameObject)) 
 		{
-            Debug.Log("ShowUI_SCRIPT");
-            UM.ShowUI ("Bot1",gameObject);
+
+            UM.BotFactory.Add(gameObject);
 		}
-		if (TankFactoryT1 == true) 
+		if (TankFactoryT1 == true &&!UM.TankFactory.Contains(gameObject)) 
 		{
-            UM.ShowUI("Tank1", gameObject);
+            UM.TankFactory.Add(gameObject);
         }
 		if (TankFactoryT1 == false && BotFactoryT1 == false) 
 		{
@@ -111,26 +113,27 @@ public class PlayerSelection : MonoBehaviour {
 			}
 		}
     }
-    
+
     // OnDeselect is called by the RTS Selection System
-    void OnDeselect() {
-        GetComponent<PlayerController>().army = false;
-        Debug.Log("OnDeselect");
+    public void OnDeselect() {
+        selected = false;
+
         circle.SetActive(false);
         //tc.GetComponent<Count>().selectedUnits--;
         if (BotFactoryT1 != true && TankFactoryT1 != true)
             GetComponent<PlayerController>().selected = false;
 
-        if (BotFactoryT1 == true) 
+        if (BotFactoryT1 == true && UM.BotFactory.Contains(gameObject)) 
 		{
-			UM.HideUI ("Bot1");
-		}
-		if (TankFactoryT1 == true) 
+            UM.BotFactory.Remove(gameObject);
+        }
+		if (TankFactoryT1 == true && UM.TankFactory.Contains(gameObject)) 
 		{
-            UM.HideUI("Tank1");
+            UM.TankFactory.Remove(gameObject);
         }
         if (TankFactoryT1 == false && BotFactoryT1 == false)
         {
+            GetComponent<PlayerController>().army = false;
             if (Camera.main.GetComponent<FormationController>().units.Contains(gameObject))
             {
                 GetComponent<PlayerController>().army = false;

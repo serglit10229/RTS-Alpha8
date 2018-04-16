@@ -7,23 +7,25 @@ public class CastlePlayer : MonoBehaviour {
 
     public float yoff = 0f;
 
+    public GameObject pb;
+
 
     public bool overlap = false;
     void OnMouseDown() {
         // use UnitSpawner
-        Debug.Log("MouseDown");
+
         //GetComponent<UnitSpawner>().Spawn();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
+
         overlap = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log(other.name);
+
         overlap = false;
     }
 

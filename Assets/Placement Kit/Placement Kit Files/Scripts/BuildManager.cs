@@ -134,6 +134,7 @@ public class BuildManager: MonoBehaviour
                     if (!ghost.GetComponent<CastlePlayer>().BuildGuide.activeSelf)
                     {
                         ghost.GetComponent<CastlePlayer>().BuildGuide.SetActive(true);
+                        ghost.GetComponent<CastlePlayer>().pb.SetActive(false);
                     }
                     ghostCollision = ghost.AddComponent<BuildingCollision>();
 					ghostOn = true;	
@@ -166,10 +167,11 @@ public class BuildManager: MonoBehaviour
 
 
                         DeactivateBuildingmode();
+
                         if (ghost.GetComponent<CastlePlayer>().BuildGuide.activeSelf)
-                        {
-                            
+                        {                            
                             ghost.GetComponent<CastlePlayer>().BuildGuide.SetActive(false);
+                            ghost.GetComponent<CastlePlayer>().pb.SetActive(true);
                         }
                         
                         break;

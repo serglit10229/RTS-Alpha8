@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 dest;
 
     public GameObject thisUnit;
+    public GameObject destPoint;
 
     Camera cam;         // Reference to our camera
     PlayerMotor motor;  // Reference to our motor
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, movementMask))
                 {
                     dest = hit.point;
+                    Instantiate(destPoint, dest, Quaternion.identity);
                     if (army == true)
                     {
                         //armyMid = Vector3.zero;

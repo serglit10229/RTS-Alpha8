@@ -318,7 +318,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616814639062036}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.98, y: -0.11612058, z: 24.98}
+  m_LocalPosition: {x: 24.08995, y: 1.9653734, z: 58.15136}
   m_LocalScale: {x: 1.1500001, y: 1.1500001, z: 1.1500001}
   m_Children:
   - {fileID: 4416360247289120}
@@ -1223,6 +1223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 35
   interval: 0.5
+  damage: 0
   enemyTag: Enemy
   arrow: {fileID: 1038592749489628, guid: c9a7a8998a12d7b46bece762361d0d82, type: 2}
   Player2: 0
@@ -1231,6 +1232,8 @@ MonoBehaviour:
   Bashnya: {fileID: 1704901934306418}
   m_Target: {fileID: 0}
   m_Speed: 5
+  mishaAxis: 1
+  lTargetDir: {x: 0, y: 0, z: 0}
 --- !u!114 &114225288498220146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1244,6 +1247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 35
   interval: 0.5
+  damage: 0
   enemyTag: Enemy
   arrow: {fileID: 1038592749489628, guid: c9a7a8998a12d7b46bece762361d0d82, type: 2}
   Player2: 0
@@ -1252,6 +1256,8 @@ MonoBehaviour:
   Bashnya: {fileID: 1704901934306418}
   m_Target: {fileID: 0}
   m_Speed: 5
+  mishaAxis: 1
+  lTargetDir: {x: 0, y: 0, z: 0}
 --- !u!114 &114272805780524918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1290,6 +1296,7 @@ MonoBehaviour:
   armyMid: {x: 0, y: 0, z: 0}
   dest: {x: 0, y: 0, z: 0}
   thisUnit: {fileID: 1616814639062036}
+  destPoint: {fileID: 1716286754887974, guid: 4b11a2c0a30e4e84686b82a798b479d7, type: 2}
 --- !u!114 &114754300123503790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1312,6 +1319,7 @@ MonoBehaviour:
   dcObj: []
   mouseClicks: 0
   doubleClickTime: 1
+  selected: 0
 --- !u!136 &136223537672136512
 CapsuleCollider:
   m_ObjectHideFlags: 1

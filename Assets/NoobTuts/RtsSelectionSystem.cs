@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Camera))]
 public class RtsSelectionSystem : MonoBehaviour {
@@ -17,6 +18,10 @@ public class RtsSelectionSystem : MonoBehaviour {
     bool visible = false;
     public GUISkin GUISkin;
 
+    public LayerMask setMask;
+    public static LayerMask lm;
+
+
     // last selection
     List<GameObject> last = new List<GameObject>();
 
@@ -29,6 +34,13 @@ public class RtsSelectionSystem : MonoBehaviour {
 
     public List<GameObject> unitsList;
 
+    private static int fingerID = -1;
+    private void Awake()
+    {
+#if !UNITY_EDITOR
+     fingerID = 0; 
+#endif
+    }
     void Start() {
         cam = GetComponent<Camera>();
     }
@@ -54,9 +66,19 @@ public class RtsSelectionSystem : MonoBehaviour {
         // screen to world raycast to find out if anything is inbetween
         var ray = cam.ScreenPointToRay(s);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-            return c == hit.collider;
+        if (EventSystem.current.IsPointerOverGameObject(fingerID) == false)
+        {
+            if (Physics.Raycast(ray, out hit, lm))
+            {
+                if (hit.transform.gameObject.tag != "UI")
+                {
+                    return c == hit.collider;
+                }
+            }
+            return false;
+        }
         return false;
+        
     }
 
     // call 'OnSelect' for a GameObject
@@ -66,7 +88,9 @@ public class RtsSelectionSystem : MonoBehaviour {
 
     // call 'OnDeselect' for a GameObject
     static void call_ondeselect(GameObject g) {
-        g.SendMessage("OnDeselect", SendMessageOptions.DontRequireReceiver);
+        //Debug.Log(g.tag);
+        if(g.tag != "UI")
+            g.SendMessage("OnDeselect", SendMessageOptions.DontRequireReceiver);
     }
 
     // call 'OnSelect' for multiple GameObjects
@@ -88,8 +112,18 @@ public class RtsSelectionSystem : MonoBehaviour {
     static GameObject find_clicked(Camera cam) {
         var ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-            return hit.transform.gameObject;
+        if (EventSystem.current.IsPointerOverGameObject(fingerID) == false)
+        {
+            if (Physics.Raycast(ray, out hit))
+            {
+                Debug.Log(hit.transform.gameObject.name + ": " + hit.transform.gameObject.tag);
+                if (hit.transform.gameObject.tag != "UI")
+                {
+                    return hit.transform.gameObject;
+                }
+            }
+            return null;
+        }
         return null;
     }
 
@@ -121,8 +155,8 @@ public class RtsSelectionSystem : MonoBehaviour {
 
         var selected = find_selected(cam, rect_around(start, cur));
 
+        lm = setMask;
 
-        
 
         // multi selection in progress? update rect
         if (Input.GetMouseButton(mousebutton)) {

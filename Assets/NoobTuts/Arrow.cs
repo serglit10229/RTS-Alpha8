@@ -7,11 +7,17 @@ public class Arrow : MonoBehaviour {
     public float speed = 5;
     public Transform target;
 
-    public float delay = 2;
+    public float delay = 0.5f;
     public string enemyTag;
     public bool afterSpawn = false;
 
-    void FixedUpdate() {
+    public int damage = 0;
+    public bool energyBoolet = false;
+
+    public GameObject effect1;
+    public GameObject effect2;
+
+    void Update() {
         if (target)
         {
             GetComponent<Rigidbody>().velocity = dir * speed;
@@ -29,13 +35,18 @@ public class Arrow : MonoBehaviour {
     }
     
     void OnTriggerEnter(Collider co) {
+        Debug.Log("Triggered");
         if (afterSpawn == true)
         {
+            Debug.Log("AfterSpawn");
             Destroy(gameObject);
-            StopCoroutine("Delay");
+            speed = 0;
+            //StopCoroutine("Delay");
         }
         if (co == target.gameObject) {
-            --co.gameObject.GetComponent<Health>().current;
+            Debug.Log("Target");
+            co.gameObject.GetComponent<Health>().current -= damage;
+            Destroy(gameObject);
         }
     }
 
