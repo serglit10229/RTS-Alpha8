@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour
     public GameObject thisUnit;
     public GameObject destPoint;
 
+    public bool airplane = false;
+    public float airSpeed;
+    public float airRotationSpeed;
+    public bool airMove = false;
     Camera cam;         // Reference to our camera
     PlayerMotor motor;  // Reference to our motor
 
@@ -56,15 +60,32 @@ public class PlayerController : MonoBehaviour
                     Instantiate(destPoint, dest, Quaternion.identity);
                     if (army == true)
                     {
-                        //armyMid = Vector3.zero;
-                        motor.MoveToPoint(transform.position + (dest - armyMid));  // Move to where we hit
-                        RemoveFocus();
+                        if(airplane == false)
+                        {
+                            //armyMid = Vector3.zero;
+                            motor.MoveToPoint(transform.position + (dest - armyMid));  // Move to where we hit
+                            RemoveFocus();
+                        }
+                        if(airplane == true)
+                        {
+                            dest.y = 30f;
+                            airMove = true;
+
+                        }
                     }
                     else
                     {
-                        armyMid = Vector3.zero;
-                        motor.MoveToPoint(hit.point);   // Move to where we hit
-                        RemoveFocus();
+                        if(airplane == false)
+                        {
+                            armyMid = Vector3.zero;
+                            motor.MoveToPoint(hit.point);   // Move to where we hit
+                            RemoveFocus();
+                        }
+                        if(airplane == true)
+                        {
+                            dest.y = 30f;
+                            airMove = true;
+                        }
                     }
 
 
@@ -87,6 +108,26 @@ public class PlayerController : MonoBehaviour
                         SetFocus(interactable);
                     }
                 }
+            }
+        }
+
+        if(airplane == true && airMove == true)
+        {
+            if(army == true)
+            {
+                float step = airSpeed * Time.deltaTime;
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dest), Time.deltaTime * airRotationSpeed);
+                transform.position = Vector3.MoveTowards(transform.position, transform.position + (dest - armyMid), step);
+                if(transform.position == transform.position + (dest - armyMid))
+                    airMove = false;
+            }
+            else
+            {
+                float step = airSpeed * Time.deltaTime;
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dest), Time.deltaTime * airRotationSpeed);
+                transform.position = Vector3.MoveTowards(transform.position, dest, step); 
+                if(transform.position == dest)
+                    airMove = false;
             }
         }
     }

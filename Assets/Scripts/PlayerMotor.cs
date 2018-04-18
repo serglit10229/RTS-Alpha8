@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 /* This component moves our player using a NavMeshAgent. */
 
-[RequireComponent(typeof(NavMeshAgent))]
+//[RequireComponent(typeof(NavMeshAgent))]
 public class PlayerMotor : MonoBehaviour
 {
     public GameObject thisUnit;
