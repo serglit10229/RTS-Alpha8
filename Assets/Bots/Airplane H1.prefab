@@ -263,8 +263,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1613696121417600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7, y: 32, z: 8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -135.1, y: 44.53, z: -108.7}
+  m_LocalScale: {x: 2.868424, y: 2.8684237, z: 2.8684237}
   m_Children:
   - {fileID: 4885276238499348}
   - {fileID: 4005541965833010}
@@ -408,8 +408,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1173016070281388}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
-  m_LocalPosition: {x: 0.00000017881, y: 0, z: -0.00000047684}
-  m_LocalScale: {x: 5.427785, y: 0.005436645, z: 5.42779}
+  m_LocalPosition: {x: 0.000000012573, y: -0.191, z: -0.00000064308}
+  m_LocalScale: {x: 5.293774, y: 0.005302414, z: 5.293778}
   m_Children: []
   m_Father: {fileID: 4056111478047644}
   m_RootOrder: 0
@@ -958,5 +958,6 @@ MonoBehaviour:
   thisUnit: {fileID: 1613696121417600}
   destPoint: {fileID: 1716286754887974, guid: 4b11a2c0a30e4e84686b82a798b479d7, type: 2}
   airplane: 1
-  airSpeed: 5
-  airRotationSpeed: 5
+  airSpeed: 35
+  airRotationSpeed: 1
+  airMove: 0

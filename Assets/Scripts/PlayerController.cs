@@ -110,22 +110,28 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
-        if(airplane == true && airMove == true)
+        
+        if (airplane == true && airMove == true)
         {
             if(army == true)
             {
                 float step = airSpeed * Time.deltaTime;
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dest), Time.deltaTime * airRotationSpeed);
-                transform.position = Vector3.MoveTowards(transform.position, transform.position + (dest - armyMid), step);
-                if(transform.position == transform.position + (dest - armyMid))
+                Vector3 lookDest = transform.position - (transform.position + (dest - armyMid));
+                lookDest.y = 0;
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(-lookDest), Time.deltaTime * airRotationSpeed);
+                if (transform.position != dest)
+                    transform.Translate(transform.forward * step, Space.World);
+                if (transform.position == transform.position + (dest - armyMid))
                     airMove = false;
             }
             else
             {
                 float step = airSpeed * Time.deltaTime;
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dest), Time.deltaTime * airRotationSpeed);
-                transform.position = Vector3.MoveTowards(transform.position, dest, step); 
+                Vector3 lookDest = transform.position - dest;
+                lookDest.y = 0;
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(-lookDest), Time.deltaTime * airRotationSpeed);
+                if (transform.position != dest)
+                    transform.Translate(transform.forward * step, Space.World);
                 if(transform.position == dest)
                     airMove = false;
             }
